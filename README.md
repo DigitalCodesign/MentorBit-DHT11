@@ -1,53 +1,67 @@
-# MentorBit-DHT11
+# MentorBitDHT11
+
+Librería para la lectura de temperatura y humedad utilizando el sensor DHT11 en módulos compatibles con MentorBit.
 
 ## Descripción
 
-Esta librería está específicamente diseñada para ser utilizada junto con el módulo **MentorBit DHT11**.
+La librería `MentorBitDHT11` facilita la lectura de datos de temperatura y humedad relativa desde el sensor DHT11 en módulos compatibles con MentorBit. Permite obtener mediciones precisas para aplicaciones de monitoreo ambiental, control climático y proyectos de domótica.
 
-El **MentorBit DHT11** es un sensor de temperatura y humedad. Esta librería permite obtener las lecturas de temperatura y humedad de manera fácil y rápida desde el sensor.
+**Nota:** La librería depende de la librería `DHT.h`.
 
-Puedes encontrar nuestro Módulo MentorBit y mucho más material de electrónica y robótica en nuestra tienda oficial:  [https://digitalcodesign.com/shop](https://digitalcodesign.com/shop)
+## Modo de Empleo
 
-## Métodos Principales
+1.  **Instalación:**
+    * Abre el IDE compatible con MentorBit.
+    * Ve a "Herramientas" -> "Gestionar librerías..."
+    * Busca "MentorBitDHT11" e instálala.
+    * **Nota:** Asegúrate de que la librería `DHT.h` esté instalada.
 
-- `MentorBitDHT11` → Constructor de la clase.
-- `obtenerTemperatura` → Obtiene y devuelve el valor de temperatura leído por el sensor DHT11 (tipo **float**).
-- `obtenerHumedad` → Obtiene y devuelve el valor de humedad leído por el sensor DHT11 (tipo **float**).
+2.  **Ejemplo básico:**
 
-## Instalación
+    ```c++
+    #include <MentorBitDHT11.h>
 
-Para instalar esta librería, simplemente copia el archivo `MentorBitDHT11.h` y `MentorBitDHT11.cpp` en la carpeta `libraries` de tu entorno de desarrollo (por ejemplo, en el IDE de Arduino).
+    MentorBitDHT11 dht(2); // Sensor DHT11 conectado al pin 2
 
-## Constructor
+    void setup() {
+      Serial.begin(9600);
+      Serial.println("Sensor DHT11 inicializado.");
+    }
 
-```cpp
-MentorBitDHT11 miModuloDHT11(pin);
-```
+    void loop() {
+      float temperatura = dht.obtenerTemperatura();
+      float humedad = dht.obtenerHumedad();
 
-Donde pin es el puerto donde está conectado el DHT-11 para recibir la lectura.
+      if (isnan(temperatura) || isnan(humedad)) {
+        Serial.println("Error al leer el sensor DHT11.");
+        delay(2000); // Espera antes de reintentar la lectura
+        return;
+      }
 
-### Parámetros
+      Serial.print("Temperatura: ");
+      Serial.print(temperatura);
+      Serial.println(" °C");
 
-- `pin`: Pin donde está conectado el sensor DHT11 (por defecto es 0).
+      Serial.print("Humedad: ");
+      Serial.print(humedad);
+      Serial.println(" %");
 
-## Métodos
+      delay(2000);
+    }
+    ```
 
-### `float obtenerTemperatura()`
+## Constructor y Métodos Públicos
 
-Obtiene y devuelve el valor de temperatura leído por el sensor DHT11.
+### Constructor
 
-#### Ejemplo de uso
+* `MentorBitDHT11(uint8_t pin = 0)`: Crea un objeto `MentorBitDHT11`.
+    * `pin`: Número de pin al que está conectado el sensor DHT11. Si no se especifica, se asume que no está conectado a ningún pin inicialmente.
 
-```cpp
-float temperatura = dht.obtenerTemperatura();
-```
+### Métodos
 
-### `float obtenerHumedad()`
+* `float obtenerTemperatura()`: Lee la temperatura en grados Celsius.
+* `float obtenerHumedad()`: Lee la humedad relativa en porcentaje.
 
-Obtiene y devuelve el valor de humedad leído por el sensor DHT11.
+### Métodos Privados
 
-#### Ejemplo de uso
-
-```cpp
-float humedad = dht.obtenerHumedad();
-```
+* `void _reiniciarDHT()`: Re-inicializa el sensor DHT11.
