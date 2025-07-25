@@ -9,7 +9,7 @@ Si estás empezando en el mundo de la electrónica, ¡no te preocupes! MentorBit
 Con esta librería, podrás saber qué temperatura y humedad hay en una habitación y usar esa información para crear proyectos increíbles.
 
 ## Descripción
-### ¿Qué es un sensor de luminosidad?
+### ¿Qué es un sensor de temperatura y humedad?
 
 Es como tener un pequeño hombre del tiempo digital. Un sensor DHT11 mide dos de las variables ambientales más comunes:
 
