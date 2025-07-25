@@ -35,7 +35,7 @@ Esta librería es el primer paso para integrar la monitorización de temperatura
 
 ## Cómo empezar
 
-Usar la librería es muy sencillo. Solo sigue estos pasos para tener tu sensor midiendo luz en pocos minutos.
+Sigue estos pasos para tener tu sensor midiendo en pocos minutos.
 
 1. **Conexión del Módulo**
 
