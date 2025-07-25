@@ -109,13 +109,13 @@ void loop() {
 ## Funciones Principales
 Esta librería está diseñada para ser minimalista y fácil de usar. Solo necesitas conocer estas dos funciones:
 
+- <code>MentorBitDHT11(uint8_t pin)</code>
+   - **¿Qué hace?** Es el **constructor**. Crea el objeto que te permitirá controlar el sensor. Debes indicarle a qué pin digital de tu MentorBit has conectado el módulo.
+   - **¿Cuándo se usa?** Al principio de tu código, antes del <code>setup()</code>, para declarar tu sensor.
+
 - <code>float obtenerTemperatura()</code>
    - **¿Qué hace?** Le pide al sensor la temperatura ambiente y te la devuelve como un número decimal (de tipo <code>float</code>) en grados **Celsius**.
    - **¿Cuándo se usa?** La llamarás cada vez que quieras saber la temperatura, normalmente dentro de la función <code>loop()</code>.
-
-- <code>void begin()</code>
-   - **¿Qué hace?** Le pide al sensor la humedad relativa del aire y te la devuelve como un número decimal (de tipo <code>float</code>) en **porcentaje (%)**.
-   - **¿Cuándo se usa?** La llamarás cada vez que quieras saber la humedad, normalmente dentro de la función <code>loop()</code>.
 
 ## Recursos Adicionales
 
