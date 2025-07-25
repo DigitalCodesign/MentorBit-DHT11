@@ -65,7 +65,7 @@ El siguiente código es todo lo que necesitas para tomar una lectura cada dos se
 #include <MentorBitDHT11.h>
 
 // Definimos el pin digital al que hemos conectado el módulo.
-#define DHT_PIN 2
+#define DHT_PIN 24
 
 // 2. Creamos un objeto 'miSensor' y le indicamos el pin que vamos a usar.
 MentorBitDHT11 miSensor(DHT_PIN);
